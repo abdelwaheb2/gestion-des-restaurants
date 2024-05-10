@@ -1,0 +1,27 @@
+{% extends 'user/resto.html' %}
+{% block afficher %}
+<div class=" container mt-5">
+    <div class="row">
+    <h1 class="text-secondary">Evenement:</h1>
+    <hr>
+    {% if even %}
+    {% for i in even %}
+        <div class="col-sm-3">
+        <div class="card my-2 shadow">
+        <img src="{{i.img.url}}" class="card-img-top" style="max-height: 145px;">
+        <div class="card-body">
+            <p class="card-text">
+            {{i.desc}} <br>
+            {{i.date}} 
+            </p>
+        </div>
+        </div>
+        </div>
+    {%endfor%}
+    {% else %}
+        <p class="text-center text-secondary">Aucune Evenement ajouter.</p>
+    {% endif %}
+</div>
+</div>
+
+{% endblock afficher %}

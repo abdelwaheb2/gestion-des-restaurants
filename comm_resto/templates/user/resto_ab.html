@@ -1,0 +1,27 @@
+{% extends 'user/user.html' %}
+{% block contenu %}
+<br><br><br><br>
+<div class="container">
+    <h3 class="text-secondary ">Resto abonne:</h3>
+    <hr>
+    <div class="row">
+      {% if restos %}
+        {% for i in restos %}
+          <div class="col-sm-3">
+            <div class="card my-2 shadow">
+              <a href="{% url 'plats_resto' i.id user.id %}">
+                <img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" style="max-height: 145px;">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">{{i.nom}} {{i.pre}}</h5>
+                <p class="card-text">{{i.desc}} </p>
+                <a href="{% url 'abonne' i.id user.id %}" class="btn mx-5" style="background-color:rgb(255, 170, 33);">Desabonner</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-center text-secondary">aucune abonnement</p>
+      {% endif %}
+    </div>
+{% endblock contenu %}

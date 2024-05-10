@@ -1,0 +1,40 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="shortcut icon" href="{% static 'image/icon/logo.png' %}" >
+        <script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+    </head>
+    <body>
+        <div class="jumbotron text-center " style="background: linear-gradient(145deg, rgb(235, 243, 164), rgb(243, 147, 58));">
+            <img src="{{resto.img.url}}" style="width: 200px; height: 200px; border-radius: 200px; " class="mt-3">
+            <h1>{{resto.nom}} {{resto.pre}}</h1>
+            <h3>{{resto.specialite}}</h3>
+            <p>{{resto.desc}}</p>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+                {% if plats %}
+                {% for i in plats %}
+                    <div class="col-sm-3">
+                    <div class="card my-2 shadow">
+                    <img src="{{i.img.url}}" class="card-img-top" style="max-height: 145px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.nom}}</h5>
+                        <p class="card-text">
+                        {{i.desc}} <br>
+                        {{i.prix}} 
+                        </p>
+                    </div>
+                    </div>
+                    </div>
+                {%endfor%}
+                {% else %}
+                    <p class="text-center text-secondary">Aucune plat ajouter.</p>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+nav,footer
+{
+    background: linear-gradient(145deg, rgb(235, 243, 164), rgb(243, 147, 58));   
+}
+
+.icon
+{
+    height: 20px;
+    width: 20px; 
+}
+
+#nav_user_tete
+{
+    background-color: aqua;
+    width: 60%;
+    height: auto;
+    margin-left: 30%;
+    border: 20px;
+
+}
+#nav_user_menu
+{
+    background-color: brown;
+    width: 30%;
+    height: auto;
+    border: 20px;
+
+}

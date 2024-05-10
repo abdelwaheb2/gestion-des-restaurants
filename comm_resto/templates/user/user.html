@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+  <head>
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="shortcut icon" href="{% static 'image/icon/logo.png' %}" >
+      <script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <img src="{% static 'image/icon/logo.png' %}" width="40px"height="40px" >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mx-lg-5" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link mx-3" href="{% url 'acuueil_user' user.id %}">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-3" href="{% url 'even_user' user.id %}">Evenement</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-3" href="{% url 'restos' user.id %}">Restos</a>
+            </li>
+          </ul>
+          <div>
+            <div class="dropstart">
+              <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{user.img.url}}" class="rounded-5" style="width: 40px; height: 40px;">
+              </button>
+              <ul class="dropdown-menu" style="background-color: rgb(224, 207, 192);">
+                <li><p class="dropdown-item">{{user.nom}} {{user.pre}} </p></li>
+                <li><p class="dropdown-item">{{user.mail}}</p></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'mod_user' user.id %}">Modefier profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'resto_ab' user.id %}">Restos abonne</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Deconnecte</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block contenu %}
+      
+    {% endblock contenu %}
+    <!--{% include 'footer.html' %}-->
+  </body>
+</html>

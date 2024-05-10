@@ -1,0 +1,82 @@
+{% load static %}
+
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/icon/logo.png' %}" >
+    <script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+    <title>Accueil</title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top px-2 navbar-expand-lg ">
+      <a href="http://127.0.0.1:8000/"><img src="{% static 'image/icon/logo.png' %}" width="50px"height="50px" ></a>
+        <form method="get" class="input-group mx-lg-5 mx-3"style="width: 64%;">
+          <input class="form-control" placeholder="Rechercher selon nom de Resto" name="rechercher">
+          <button class="btn btn-outline-dark" type="submit">Recherche</button>
+        </form>
+        <button class="navbar-toggler"data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="nav">
+          <ul class="navbar-nav">
+           <li class="nav-item">
+              <a href="inscription/" target="_blank"><button class="btn btn-outline-primary mx-3 mt-2">Inscription</button></a>
+            </li>
+             <li class="nav-item">
+             <a href="connexion/"><button  class="btn btn-outline-success mx-3 mt-2">Connexion</button></a> 
+           </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="mt-5">
+      {% include 'accueil/pub.html' %}
+    </div>
+    <div class="position-absolute end-0">
+      <a href="pub/" target="_blank" class="btn btn-outline-warning rounded-5 text-center">Add<br>pub</a>
+    </div>
+    <div class="container mb-5">
+      <br><br>
+      <h3 class="text-secondary">Resto:</h3>
+      <hr>
+      <div class="row">
+        {% if restos %}
+          {% for i in restos %}
+            <div class="col-sm-3">
+              <div class="card my-2 shadow">
+                <img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" style="max-height: 145px;">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.nom}} {{i.pre}}</h5>
+                  <p class="card-text">{{i.desc}} </p>
+                  <a href="{% url 'affi_resto' i.id %}" target="_blank" class="btn mx-5" style="background-color:rgb(255, 170, 33);">Voir profile</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-center text-secondary">aucune resto avec cette nom</p>
+        {% endif %}
+      </div>
+      {% if voir %}
+      <h3 class="text-secondary">voir plus:</h3>
+      <hr>
+      <div class="row">
+          {% for i in voir %}
+            <div class="col-sm-3">
+              <div class="card my-2 shadow">
+                <img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" style="max-height: 145px;">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.nom}} {{i.pre}}</h5>
+                  <p class="card-text">{{i.desc}} </p>
+                  <a href="{% url 'affi_resto' i.id %}" target="_blank" class="btn mx-5" style="background-color:rgb(255, 170, 33);">Voir profile</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          {% endif %}
+          </div>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

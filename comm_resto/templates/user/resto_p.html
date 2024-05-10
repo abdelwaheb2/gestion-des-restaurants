@@ -1,0 +1,26 @@
+{% extends 'user/resto.html' %}
+{% block afficher %}
+<div class="container my-5">
+    <div class="row">
+        <h1 class="text-secondary">Plats:</h1>
+        <hr>
+        {% if plats %}
+        {% for i in plats %}
+            <div class="col-sm-3">
+            <div class="card my-2 shadow">
+            <img src="{{i.img.url}}" class="card-img-top" style="max-height: 145px;">
+            <div class="card-body">
+                <h5 class="card-title">{{i.nom}}</h5>
+                <p class="card-text">
+                {{i.desc}} <br>
+                {{i.prix}} 
+                </p>
+            </div>
+            </div>
+            </div>
+        {%endfor%}
+        {% else %}
+            <p class="text-center text-secondary">Aucune plat ajouter.</p>
+        {% endif %}
+    </div>
+{% endblock afficher %}

@@ -1,0 +1,40 @@
+{% extends "resto/resto_admin.html" %}
+{% block contenu %}
+<head>
+    <title>{{resto.nom}}|resto</title>
+</head>
+    <div class="container my-5">
+        <h1 class="text-secondary">Votre plats:</h1>
+        <hr>
+        <div class="row">
+            {% if plats %}
+            {% for i in plats %}
+                <div class="col-sm-3">
+                <div class="card my-2 shadow">
+                <img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" style="max-height: 145px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.nom}}</h5>
+                    <p class="card-text">
+                    {{i.desc}} <br>
+                    {{i.prix}} 
+                    </p>
+                    <div class="dropdown" data-bs-theme="blue">
+                    <a class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:rgb(255, 170, 33);">
+                        Choix
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li class="dropdown-item" ><a href="{% url 'desactive' i.id  %}" class="btn btn-outline-info" type="button" style="width: 100px;">Desactive</a></li>
+                        <li class="dropdown-item" > <a href="{% url 'mod_plat' i.id  %}" class="btn btn-outline-warning" type="button" style="width: 100px;">Modifier</a></li>
+                        <li class="dropdown-item" ><a href="{% url 'sup_plat' i.id  %}" class="btn btn-outline-danger" type="button" style="width: 100px;">Suppreme</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+                </div>
+            {%endfor%}
+            {% else %}
+                <p class="text-center text-secondary">Aucune plat ajouter.</p>
+            {% endif %}
+        </div>
+{% endblock contenu %}
+

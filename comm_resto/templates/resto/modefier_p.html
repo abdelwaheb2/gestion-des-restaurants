@@ -1,0 +1,44 @@
+{% extends "resto/resto_admin.html" %}
+{% block contenu %}
+<head>
+  <title>Modefier plat</title>
+</head>
+<body>
+    <div class="container justify-content-center mt-5">
+        <h1 class="text-primary">Modefier Plat</h1>
+        <hr>
+        <form method="post">
+          {% csrf_token %}
+          <input type=" text" class="form-control mb-2" placeholder="Nom du plat" name="nom" value="{{plat.nom}}">
+          <textarea placeholder="Description" class="form-control mb-2" name="desc">{{plat.desc}}</textarea>
+          <input class="form-control mb-2" type="file" accept="image/*" name="image">
+          <input type="number" name="prix" class="form-control mb-2" placeholder="Prix" value="{{plat.prix}}">
+          <button type="submit" class="btn btn-primary mt-3">Modefier</button>
+          {% if messages %}
+          <button type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal" data-bs-target="#Modal">
+             Voire l'erre
+            </button>
+            <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Erre de saisire</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }} <br></div>
+                  {% endfor %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+            </div>
+        {% endif %}
+        </form>
+      </div>
+  </body>
+
+{% endblock contenu %}

@@ -1,0 +1,47 @@
+{% extends 'user/user.html' %}
+{% block contenu %}
+<head>
+    <title>Modefier compte</title>
+  </head>
+  <br>
+  <div class="container mt-5">
+      <form method="post">
+        {% csrf_token %}
+        <h1 class="text-primary">Modefier votre compte </h1>
+        <hr>
+          <input type="text" placeholder="Numero de telephone" disabled class="form-control" name="tele" value="{{user.tel}}">
+          <input type="text" placeholder="Email" class="mt-3 form-control" disabled name="mail" value="{{user.mail}}">
+          <input type="text" placeholder="Nom" class="form-control mt-3" name="nom" value="{{user.nom}}">
+          <input type="text" placeholder="Prenom" class="form-control mt-3" name="prenom" value="{{user.pre}}">
+          <input type="text" placeholder="paye" class="form-control mt-3" name="paye" value="{{user.pays}}">
+          <input type="text" placeholder="gouvernement" class="form-control mt-3" name="gouvernement" value="{{user.gouvernement}}">
+          <input type="text" placeholder="région" class="form-control mt-3" name="region" value="{{user.region}}">
+          <input class="form-control mt-3" type="file" accept="image/*" name="image">
+          <input type="submit" value="modefier" class="btn btn-success mb-5 mt-3">
+          {% if messages %}
+            <button type="button" class="btn btn-outline-warning mt-3 mb-5" data-bs-toggle="modal" data-bs-target="#Modal">
+               Voire l'erre
+              </button>
+              <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Erre de saisire</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {% for message in messages %}
+                      <div class="alert alert-danger">{{ message }} <br></div>
+                    {% endfor %}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+          {% endif %}
+      </form>
+    </div>
+  
+{% endblock contenu %}

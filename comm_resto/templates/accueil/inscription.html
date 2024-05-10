@@ -1,0 +1,58 @@
+{% load static %}
+
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/icon/logo.png' %}" >
+    <title>Inscription</title>
+    <script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form method="post">
+        {% csrf_token %}
+        <h1 class="text-primary">Inscription </h1>
+        <hr>
+          <input type="text" placeholder="Nom" class="form-control" name="nom"><br>
+          <input type="text" placeholder="Prenom" class="form-control" name="prenom"><br>
+          <input type="text" placeholder="Numero de telephone" class="form-control" name="tele"><br>
+          <input type="text" placeholder="Email" class="mb-3 form-control" name="mail"><br>
+          <strong class="fw-semibold">Choix votre date de naissance:</strong>  <input type="date" class="mb-3" name="date"><br>
+          <strong class="fw-semibold">Sexe:</strong>  Homme <input type="radio" value="H" name="sexe" checked class="form-check-input mb-4">  Famme <input type="radio" value="F" class="form-check-input" name="sexe"><br>
+          <input type="password" placeholder="Mot de passe" class="form-control" name="mot"><br>
+          <input type="password" placeholder="Confirme la mot de passe" class="form-control" name="conf_mot"><br>
+          <select class="form-select" name="compte">
+            <option selected value="0">Choix nature de compte</option>
+            <option value="1">Utilisateur</option>
+            <option value="2">resto</option>
+          </select><br>
+          <input type="submit" value="Inscription" class="btn btn-success">
+          <input type="reset" value="Suppremer tous" class="btn btn-outline-danger">
+          {% if messages %}
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#Modal">
+               Voire l'erre
+              </button>
+              <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Erre de saisire</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {% for message in messages %}
+                      <div class="alert alert-danger">{{ message }} <br></div>
+                    {% endfor %}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+          {% endif %}
+      </form>
+    </div>
+
+  </body>

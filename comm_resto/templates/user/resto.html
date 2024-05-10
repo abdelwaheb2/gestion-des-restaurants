@@ -1,0 +1,50 @@
+{% extends 'user/user.html' %}
+{% block contenu %}
+<head>
+    <title>{{resto.nom}}</title>
+</head>
+<div class="jumbotron text-center container-fluid mt-5 " style="background: linear-gradient(145deg, rgb(235, 243, 164), rgb(243, 147, 58));">
+    <img src="{{resto.img.url}}" style="width: 200px; height: 200px; border-radius: 200px; " class="mt-5">
+    <h1>{{resto.nom}} {{resto.pre}}</h1>
+    <h3>{{resto.specialite}}</h3>
+    <p>{{resto.desc}}</p>
+    <div class="row ">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active text-secondary-emphasis" aria-current="page" href="{%url 'plats_resto' resto.id user.id %}">Plats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary-emphasis" href="{%url 'even_resto' resto.id user.id%}">Evenement</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary-emphasis " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Plus details</a>
+            </li>
+            <li class="nav-item">
+              <a class=" btn btn-outline-success rounded-5" href="{% url 'abonne' resto.id user.id %}" >{{ab}}</a>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link text-secondary-emphasis ">{{nb_ab}} abonne</p>
+            </li>
+            
+          </ul>
+    </div>
+</div>
+<div class="collapse mt-3" id="collapseExample">
+  <div class="card card-body bg-dark-subtle">
+    <p class="text-warning-emphasis text-center">
+    <strong>Specialite: </strong>{{resto.specialite}} <br>
+    <strong>Paye: </strong>{{resto.pays}} <br>
+    <strong>Gouvernement: </strong>{{resto.gouvernement}} <br>
+    <strong>Region: </strong>{{resto.region}} <br>
+    <strong>Addresse : </strong>{{resto.addresse}} <br>
+    <strong>Numero telephone: </strong>{{resto.tel}} <br>
+    <strong>Mail: </strong>{{resto.mail}} <br>   
+  </p>
+   </div>
+</div>
+</div>
+{% block afficher %}
+
+{% endblock afficher %}
+  
+{% endblock contenu %}

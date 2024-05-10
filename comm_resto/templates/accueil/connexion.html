@@ -1,0 +1,27 @@
+{% load static %}
+
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Connexion</title>
+  </head>
+  <body>
+    <div class="container justify-content-center mt-5">
+      <h1 class="text-primary">Connexion</h1>
+      <hr>
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Numero de telephone" class="form-control" name="tele"><br>
+        <input type="password" placeholder="Mot de passe" class="form-control" name="mot_passe"><br>
+        <input type="submit" value="Connexion" class="btn btn-success">
+        <input type="button" value="Je oblier la mot de passe" class="btn btn-outline-primary">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger">{{ message }} <br></div>
+          {% endfor %}
+        {% endif %}
+      </form>
+    </div>
+
+  </body>

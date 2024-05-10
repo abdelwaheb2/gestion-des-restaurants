@@ -1,0 +1,39 @@
+{% extends 'user/user.html' %}
+{% block contenu %}
+<br>
+<div class="container mt-5">
+<h1 class="text-secondary">Evenement:</h1>
+<hr>
+<div class="row">
+    {% if even %}
+    {% for i in even %}
+    {% for j in i %}
+    <div class="col-sm-3">
+        <div class="card my-2 shadow">
+        <div class="card-body p-0" >
+            <h5 class="card-title position-absolute ms-5 text-break">{{j.resto.nom}} <br> {{j.resto.pre}}</h5>
+            <div class=" my-3 ms-1">
+                <a href="{% url 'plats_resto' j.resto.id user.id %}">
+                    <img src="{{j.resto.img.url}}" style="width: 20px; height: 20px;">
+                </a>
+            </div>
+        </div>
+        <img src="{{j.img.url}}" style="max-height: 145px;">
+        <div class="card-body">
+            <h5 class="card-title">{{j.nom}}</h5>
+            <p class="card-text">
+            {{j.desc}} <br>
+            {{j.date}}
+            </p>
+        </div>
+        </div>
+    </div>
+{%endfor%}
+{%endfor%}
+
+{% else %}
+    <p class="text-center text-secondary">Faire des abonnement pour plusieur restos <br> pour voir sont Evenement ici.</p>
+{% endif %}
+</div> 
+</div>
+{% endblock contenu %}

@@ -1,0 +1,26 @@
+
+{% extends "resto/resto_admin.html" %}
+{% block contenu %}
+<head>
+  <title>Ajout plat</title>
+</head>
+  <body>
+    <div class="container justify-content-center mt-5">
+        <h1 class="text-primary">Ajouter Plat</h1>
+        <hr>
+        <form method="post">
+          {% csrf_token %}
+          <input type=" text" class="form-control mb-2" placeholder="Nom du plat" name="nom">
+          <textarea placeholder="Description" class="form-control mb-2" name="desc"></textarea>
+          <input class="form-control mb-2" type="file" accept="image/*" name="image">
+          <input type="number" name="prix" class="form-control mb-2" placeholder="Prix">
+          <button type="submit" class="btn btn-primary">Enregister</button>
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-danger mt-5">{{ message }} <br></div>
+            {% endfor %}
+          {% endif %}
+        </form>
+      </div>
+  </body>
+{% endblock contenu %}
