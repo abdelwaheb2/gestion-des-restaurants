@@ -1,0 +1,24 @@
+    
+{% extends 'user/user.html' %}
+
+{% block contenu %}
+<div class="container">
+    <br>
+    <h1 class="text-primary mt-5 fw-bold">Mon Restaurants </h1>
+    <hr>
+    <ul class="list-group">
+        {% for i in restaus %}
+            <li class="list-group-item d-flex gap-5">
+                <img src="{{i.img.url}}" width="200" height="200" alt="">
+                <div class="fs-4">
+                    <div><span class="fw-bold">Nom : </span> {{i.nom}}</div>
+                    <div><span class="fw-bold ">Specialite : </span> {{i.specialite}}</div>
+                    <div><span class="fw-bold">Nombre d'abonne : </span> {{i.nbr}}</div>
+                    <a href="{% url 'accueil_resto' i.id %}" class="btn btn-outline-dark fw-bold mt-5">voir restaurant</a>
+                </div>
+            </li>
+        {% endfor %}
+        
+    </ul>
+</div>
+{% endblock contenu %}

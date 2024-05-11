@@ -11,16 +11,16 @@
     <div class="row ">
         <ul class="nav justify-content-center">
             <li class="nav-item">
-              <a class="nav-link active text-secondary-emphasis" aria-current="page" href="{%url 'plats_resto' resto.id user.id %}">Plats</a>
+              <a class="nav-link active text-secondary-emphasis" aria-current="page" href="{%url 'plats_resto' resto.id %}">Plats</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary-emphasis" href="{%url 'even_resto' resto.id user.id%}">Evenement</a>
+              <a class="nav-link text-secondary-emphasis" href="{%url 'even_resto' resto.id%}">Evenement</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary-emphasis " data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Plus details</a>
+              <a class="nav-link text-secondary-emphasis btn " data-bs-toggle="modal" data-bs-target="#exampleModal">Plus details</a>
             </li>
             <li class="nav-item">
-              <a class=" btn btn-outline-success rounded-5" href="{% url 'abonne' resto.id user.id %}" >{{ab}}</a>
+              <a class=" btn btn-outline-success rounded-5" href="{% url 'abonne' resto.id %}" >{{ab}}</a>
             </li>
             <li class="nav-item">
               <p class="nav-link text-secondary-emphasis ">{{nb_ab}} abonne</p>
@@ -29,19 +29,29 @@
           </ul>
     </div>
 </div>
-<div class="collapse mt-3" id="collapseExample">
-  <div class="card card-body bg-dark-subtle">
-    <p class="text-warning-emphasis text-center">
-    <strong>Specialite: </strong>{{resto.specialite}} <br>
-    <strong>Paye: </strong>{{resto.pays}} <br>
-    <strong>Gouvernement: </strong>{{resto.gouvernement}} <br>
-    <strong>Region: </strong>{{resto.region}} <br>
-    <strong>Addresse : </strong>{{resto.addresse}} <br>
-    <strong>Numero telephone: </strong>{{resto.tel}} <br>
-    <strong>Mail: </strong>{{resto.mail}} <br>   
-  </p>
-   </div>
+
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-dark">
+          <strong>Specialite: </strong>{{resto.specialite}} <br>
+          <strong>Paye: </strong>{{resto.pays}} <br>
+          <strong>Gouvernement: </strong>{{resto.gouvernement}} <br>
+          <strong>Region: </strong>{{resto.region}} <br>
+          <strong>Addresse : </strong>{{resto.addresse}} <br>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Colse</button>
+      </div>
+    </div>
+  </div>
 </div>
 {% block afficher %}
 

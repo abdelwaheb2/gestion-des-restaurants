@@ -33,23 +33,25 @@
     <div class="mt-5">
       {% include 'accueil/pub.html' %}
     </div>
-    <div class="position-absolute end-0">
-      <a href="pub/" target="_blank" class="btn btn-outline-warning rounded-5 text-center">Add<br>pub</a>
-    </div>
     <div class="container mb-5">
       <br><br>
-      <h3 class="text-secondary">Resto:</h3>
+      <h3 class="text-secondary">Restaurants:</h3>
       <hr>
       <div class="row">
         {% if restos %}
           {% for i in restos %}
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <div class="card my-2 shadow">
-                <img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" style="max-height: 145px;">
-                <div class="card-body">
-                  <h5 class="card-title">{{i.nom}} {{i.pre}}</h5>
-                  <p class="card-text">{{i.desc}} </p>
-                  <a href="{% url 'affi_resto' i.id %}" target="_blank" class="btn mx-5" style="background-color:rgb(255, 170, 33);">Voir profile</a>
+                <img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" height="300">
+                <div class="card-body ">
+                  <h5 class="card-title">{{i.nom}}</h5>
+                  <div class="row">
+                  <p class="card-text col-6"> <span class="fw-bold">Specialite : </span> {{i.specialite}} </p>
+                  <p class="card-text col-6"><span class="fw-bold">Payee : </span>{{i.pays}} </p>
+                  <p class="card-text col-6"><span class="fw-bold"> Region :  </span>{{i.region}} </p>
+                  <p class="card-text col-6">{{i.desc}} </p>
+                 </div>
+                  <a href="{% url 'affi_resto' i.id %}" target="_blank" class="btn w-100" style="background-color:rgb(255, 170, 33);">Voir profile</a>
                 </div>
               </div>
             </div>

@@ -16,13 +16,13 @@
         <div class="collapse navbar-collapse mx-lg-5" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 my-lg-0">
             <li class="nav-item">
-              <a class="nav-link mx-3" href="{% url 'acuueil_user' user.id %}">Accueil</a>
+              <a class="nav-link mx-3" href="{% url 'acuueil_user'  %}">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-3" href="{% url 'even_user' user.id %}">Evenement</a>
+              <a class="nav-link mx-3" href="{% url 'even_user'  %}">Evenement</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-3" href="{% url 'restos' user.id %}">Restos</a>
+              <a class="nav-link mx-3" href="{% url 'restos'  %}">Restos</a>
             </li>
           </ul>
           <div>
@@ -31,13 +31,14 @@
                 <img src="{{user.img.url}}" class="rounded-5" style="width: 40px; height: 40px;">
               </button>
               <ul class="dropdown-menu" style="background-color: rgb(224, 207, 192);">
-                <li><p class="dropdown-item">{{user.nom}} {{user.pre}} </p></li>
-                <li><p class="dropdown-item">{{user.mail}}</p></li>
+                <li><p class="dropdown-item">{{user.user.first_name}} {{user.user.last_name}} </p></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{% url 'mod_user' user.id %}">Modefier profile</a></li>
-                <li><a class="dropdown-item" href="{% url 'resto_ab' user.id %}">Restos abonne</a></li>
+                <li><a class="dropdown-item" href="{% url 'create_restau'  %}">Creer mom restaurant</a></li>
+                <li><a class="dropdown-item" href="{% url 'mod_user'  %}">Modefier profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'resto_ab'  %}">Restos abonne</a></li>
+                <li><a class="dropdown-item" href="{% url 'myrestaus'  %}">Mon Restaurants</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Deconnecte</a></li>
+                <li><a class="dropdown-item" href=" {% url 'deconnecter' %} ">Deconnecte</a></li>
               </ul>
             </div>
           </div>

@@ -1,20 +1,12 @@
-{% load static %}
-<!doctype html>
-<html>
-  <head>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="shortcut icon" href="{% static 'image/icon/logo.png' %}" >
-    <title>Inscription|configure compte resto</title>
-    <script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
-  </head>
-  <body class="my-5">
+{% extends 'user/user.html' %}
+{% block contenu %}
+<br>
     <div class="container justify-content-center mt-5">
-      <h1 class="text-primary">configure voter compte</h1>
+      <h1 class="text-primary">Creer mon restaurant</h1>
       <hr>
       <form method="post">
         {% csrf_token %}
-        <input type="text" placeholder="cleé mail" class="form-control mt-1" name="mail">
-        <input type="button" class="btn btn-outline-warning mt-3" value="Vous n'avez pas reçu d'e-mail">
+        <input type="text" placeholder="Nom de rastaurant" class="form-control mt-1" name="nom">
         <input type="text" placeholder="paye" class="form-control mt-3" name="paye">
         <input type="text" placeholder="gouvernement" class="form-control mt-3" name="gouvernement">
         <input type="text" placeholder="région" class="form-control mt-3" name="region">
@@ -22,32 +14,14 @@
         <input class="form-control mt-3" type="file" accept="image/*" name="image">
         <input type="text" placeholder="Specialite" class="form-control mt-3" name="specialite">
         <textarea placeholder="description" class="form-control mt-3" name="description"></textarea>
-        <input type="submit" value="conferme" class="btn btn-success mt-3">
+        <input type="submit" value="Creer" class="btn px-5 btn-success mt-3">
         <input type="reset" value="Suppremer tous" class="btn btn-outline-danger mt-3">
-        {% if messages %}
-        <button type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal" data-bs-target="#Modal">
-           Voire l'erre
-          </button>
-          <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Erre de saisire</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                {% for message in messages %}
-                  <div class="alert alert-danger">{{ message }} <br></div>
-                {% endfor %}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-          </div>
-      {% endif %}
+        <div class="mt-5">
+          {% for message in messages %}
+            <div class="alert alert-danger">{{ message }} <br></div>
+          {% endfor %}
+        </div>
       </form>
     </div>
 
-  </body>
+    {% endblock contenu %}

@@ -8,17 +8,17 @@
     {% if even %}
     {% for i in even %}
     {% for j in i %}
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div class="card my-2 shadow">
         <div class="card-body p-0" >
-            <h5 class="card-title position-absolute ms-5 text-break">{{j.resto.nom}} <br> {{j.resto.pre}}</h5>
-            <div class=" my-3 ms-1">
-                <a href="{% url 'plats_resto' j.resto.id user.id %}">
-                    <img src="{{j.resto.img.url}}" style="width: 20px; height: 20px;">
-                </a>
+            <div class=" my-2 ms-1 d-flex">
+                <a href="{% url 'plats_resto' j.resto.id  %}">
+                    <img src="{{j.resto.img.url}}" style="width: 60px; height: 60px;">
+                
+                <h5 class="card-title ms-2 text-break"><span class="fw-bold fs-3 text-dark">{{j.resto.nom}}</span> </a> <br> {{j.resto.specialite}}</h5>
             </div>
         </div>
-        <img src="{{j.img.url}}" style="max-height: 145px;">
+        <img src="{{j.img.url}}" height="250">
         <div class="card-body">
             <h5 class="card-title">{{j.nom}}</h5>
             <p class="card-text">

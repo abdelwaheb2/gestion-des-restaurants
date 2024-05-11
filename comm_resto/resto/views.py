@@ -67,8 +67,8 @@ def plat(request,id):
         prix=request.POST['prix']
         prix=float(prix)
         if nom==''or desc=='' or img==''or prix==0:
-            messages.info(request,'Erre,merci remplire tous le formulaire pour ajouter un plat')
-            return redirect ('plat',id,x)
+            messages.info(request,'merci remplire tous le formulaire pour ajouter un plat')
+            return redirect ('plat',x)
         else:
             data=Plat(resto=Resto(id),nom=nom,desc=desc,img='plat/'+img,prix=prix)
             data.save()
@@ -109,6 +109,9 @@ def mod_plat(request,id):
         img=request.POST['image']
         prix=request.POST['prix']
         prix=float(prix)
+        if img :
+            p.img="plat/"+img
+            p.save()
         if mot(nom)==False:
             messages.add_message(request, messages.INFO, 'merci de verifier le nom du plat')
             x=1
@@ -120,12 +123,6 @@ def mod_plat(request,id):
             x=1
         else:
             p.desc=desc
-            p.save()
-        if img=='':
-            messages.add_message(request, messages.INFO, 'merci de choixire une photo pour cet plat')
-            x=1
-        else:
-            p.img="plat/"+img
             p.save()
         if prix<=0:
             messages.add_message(request, messages.INFO, 'merci de verifier le prix du plat')

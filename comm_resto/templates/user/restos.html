@@ -8,7 +8,7 @@
         <input type="submit" value="Rechercher" class="btn btn-outline-warning">
     </form>
   </div>
-    <h3 class="text-secondary">Resto:</h3>
+    <h3 class="text-secondary fs-1">Resto:</h3>
     <hr>
     <div class="row">
       {% if restos %}
@@ -17,11 +17,12 @@
 
           <div class="col-sm-3">
             <div class="card my-2 shadow">
-              <a href="{% url 'plats_resto' i.id user.id %}"><img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}" style="max-height: 145px;"></a>
+              <a href="{% url 'plats_resto' i.id  %}"><img src="{{i.img.url}}" class="card-img-top" alt="{{i.specialite}}"  height="200" ></a>
               <div class="card-body">
-                <h5 class="card-title">{{i.nom}} {{i.pre}}</h5>
+                <h5 class="card-title">{{i.nom}}</h5> 
+                <p class="card-text">{{i.specialite}} </p>
                 <p class="card-text">{{i.desc}} </p>
-                <a href="{% url 'abonne' i.id user.id %}" class="btn mx-5" style="background-color:rgb(255, 170, 33);">Abonnee</a>
+                <a href="{% url 'abonne' i.id %}" class="btn " style="background-color:rgb(255, 170, 33);">Abonnee</a>
               </div>
             </div>
           </div>
@@ -31,26 +32,7 @@
         <p class="text-center text-secondary">aucune resto avec cet nom</p>
       {% endif %}
     </div>
-    {% if plus %}
-    <h3 class="text-secondary">Voir plus</h3>
-    <hr>
-    <div class="row">
-        
-        {% for j in plus %}
-
-          <div class="col-sm-3">
-            <div class="card my-2 shadow">
-              <a href="{% url 'plats_resto' j.id user.id %}"><img src="{{j.img.url}}" class="card-img-top" alt="{{j.specialite}}" style="max-height: 145px;"></a>
-              <div class="card-body">
-                <h5 class="card-title">{{j.nom}} {{j.pre}}</h5>
-                <p class="card-text">{{j.desc}} </p>
-                <a href="{% url 'abonne' j.id user.id %}" class="btn mx-5" style="background-color:rgb(255, 170, 33);">Abonnee</a>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-       
-      {% endif %}
+    
     </div>
   </div>
 {% endblock contenu %}

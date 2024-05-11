@@ -20,7 +20,7 @@
                 <li class="dropdown-item" >votre specialite: {{resto.specialite}}</li>
                 <li class="dropdown-item" >Nombre d'abonne: {{ab}}</li>
                 <li class="dropdown-item" >Nombre de plat ajouter : {{nbp}}</li>
-                <li class="dropdown-item" ><a class="dropdown-item" href="../connexion">Deconnexion</a></li>
+                <li class="dropdown-item" ><a class="link text-white" href="/">Returne au votre compte</a></li>
               </ul>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
               <a  href="{% url 'accueil_resto' resto.id%}" class="nav-link">Accueil</a>
             </li>
             <li class="nav-item mx-3">
-              <a  href="{% url 'mod_resto' resto.id%}" class="nav-link">Modifier voter profile</a>
+              <a  href="{% url 'mod_resto' resto.id%}" class="nav-link">Modifier les donner </a>
             </li>
             <li class="nav-item mx-3">
               <a  href="{% url 'plat' resto.id%}" class="nav-link">Ajouter plat</a>
@@ -43,9 +43,7 @@
             <li class="nav-item mx-3">
               <a  href="{% url 'even' resto.id%}" class="nav-link">Evenements</a>
             </li>
-            <li class="nav-item mx-3">
-              <a  href="{% url 'affi_resto' resto.id%}" class="nav-link" target="_blank">Vu en tant que utilisateur</a>
-            </li>
+            
           </ul>
         </div>
       </div>
